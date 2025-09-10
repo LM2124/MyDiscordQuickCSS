@@ -1,0 +1,227 @@
+/*
+  ---------  Nitro Annoyances  ---------
+*/
+
+/* Nitro gift button. Which? Hopefully all of them! */
+div[aria-label="Send a gift"] {
+  display: none;
+}
+
+/* Nitro ads in profile settings... */
+#profile-customization-tab>[class*=container] {
+  display: none;
+}
+
+/* "Profile effect (new) (exclusive to nitro)" */
+#profile-customization-tab [class*=customizationSection]:has([class*=premiumFeatureBorder]) {
+  display: none;
+}
+
+/* "Try out nitro!" */
+#profile-customization-tab [class*=tryItOutSection] {
+  display: none;
+}
+
+/* Super React buttons on message hover */
+div[aria-label="Add Super Reaction"] {
+  display: none;
+}
+
+/* Super react context menu button */
+#message-add-reaction-1 {
+  display: none;
+}
+
+/*
+  Making the actual super reactions tolerable to look at,
+  without outright removing them
+*/
+
+/* disable super reaction animation */
+div[class*=effectsWrapper] {
+  display: none;
+}
+
+/* discord sets the emoji's opacity to 0 during animation; set it back */
+div[class*=effectsWrapper]+img[class*="hideEmoji"] {
+  opacity: 1 !important;
+}
+
+/* disable shake */
+div[class*=reaction] {
+  /* other methods I tried still gave it time to play for a frame */
+  animation-delay: 9999s !important;
+}
+
+/* disable glow effect */
+div[class*="burstGlow"] {
+  display: none;
+}
+
+/* 
+ "Want to start the hype train? Get Nitro and SHOVE IT UP YOUR [redacted]"
+ (...When hovering over a super reaction.)
+ */
+[class*=reactionTooltip] [class*=burstReactionTooltipPrompt] {
+  display: none;
+}
+
+/* Won't be needing this spacer anymore */
+[class*=reactionTooltip] [class*=burstReactionTooltipSpacer] {
+  padding-bottom: unset;
+  margin-bottom: unset;
+  border-bottom: unset;
+}
+
+/* Nitro button above direct messages */
+ul[aria-label="Direct Messages"] li:has(a[href="/store"]) {
+  display: none;
+}
+
+/* Shop button above direct messages */
+ul[aria-label="Direct Messages"] li:has(a[href="/shop"]) {
+  display: none;
+}
+
+/* Hide profile Nameplates */
+div[role="listitem"] div[class*=nameplated]>div[class^=container] {
+  display: none;
+}
+
+
+/*
+  Remove fancy nitro-colored background gradients.
+  I don't like these.
+*/
+div[class^=gradientBackground],
+div[class^=pulseGradient] {
+  display: none;
+}
+
+
+/*
+  The "Merch" option in settings immediately
+  opens a browser tab without confirmation.
+  This one in specific can fuck right off.
+*/
+nav>div[aria-label="User Settings"]>div[aria-label="Merch"] {
+  display: none;
+}
+
+
+/*
+  ---------  Distractions  ---------
+*/
+
+/* 
+  Sticker picker button.
+  You can literally open the GIF picker and switch
+  to the sticker picker. I don't need the space this takes.
+*/
+div.expression-picker-chat-input-button:has(> div[aria-label="Open sticker picker"]) {
+  display: none;
+}
+
+/*
+  Apps launcher button.
+  Nope, not engaging with this slop. Goodbye.
+*/
+.app-launcher-entrypoint {
+  display: none;
+}
+
+/* "Turn On Camera" button in voice call window */
+div[class^="callContainer"] div[class^="attachedCaretButtonContainer"]:has(button[aria-label="Turn On Camera"]) {
+  display: none;
+}
+
+/* "Start Activity" button in voice call window */
+div[class^="callContainer"] div:has(>div[aria-label="Play Activities here"]) {
+  display: none;
+}
+
+/*
+  Removes `Noise Suppression`, `Start Activity`, and `Camera` 
+  buttons respectively; disable each as desired
+*/
+/* section[aria-label="User area"] button[aria-label="Noise Suppression powered by Krisp"] { 
+  display: none
+} */
+section[aria-label="User area"] button[aria-label="Start an Activity"] {
+  display: none
+}
+
+section[aria-label="User area"] button[aria-label="Turn On Camera"] {
+  display: none
+}
+
+/*
+  Hide "Discover" servers button
+  Flakey rule but meh. It should be obvious when this breaks.
+*/
+nav div[aria-label="Servers"]+div+div[class^=listItem] {
+  display: none;
+}
+
+/*
+  Hide "Server Boosts" button on the left-side channel bar header.
+  Seems to only show up when you're admin for a server with active boosts
+  or something; But this can be also accessed from the server settings menu
+  and I do not need the extra visual bloat this adds.
+*/
+ul[aria-label="Channels"]>li:has(div[aria-label="Server Boosts"]) {
+  display: none;
+}
+
+
+/*
+  ---------  Below are rules related to making the  ---------
+  --------- visual refresh more bearable to my eyes ---------
+*/
+
+
+/*
+  Using this class might not stick for too long 
+  since I have a feeling that discord will remove it
+  as they phase out the visual refresh
+  Still, for now it makes some tuning very easy.
+*/
+.visual-refresh {
+  /*
+    Reducing size of that massive title bar.
+    Now the buttons look a bit too big, but I don't care.
+    It was SO eye-catching.
+  */
+  --custom-app-top-bar-height: calc(14px + var(--space-sm));
+  /*
+    Reducing dead space on chat bar.
+    The one where you type your message in.
+  */
+  --custom-channel-textarea-text-area-height: 40px;
+  /*
+    Reducing size of the member list, on the right side.
+  */
+  --custom-member-list-width: 250px;
+}
+
+/*
+  Greatly reducing padding on the right-side members bar
+  Suddenly there's so much less wasted space!
+
+  The Members list is a <div> in a regular channel and a <ul> in a threads window. Great.
+  I'm using that <main> element as an anchor because I don't like the idea of
+  a lone *[aria-label=] selector trying to match literally everything in the DOM
+*/
+div:has(> main[class^="chatContent"]) *[aria-label="Members"]>[class^=membersGroup] {
+  padding-left: 10px;
+}
+
+div:has(> main[class^="chatContent"]) *[aria-label="Members"]>div[role="listitem"] div[class^=childContainer] {
+  padding-inline: 0;
+}
+
+div:has(> main[class^="chatContent"]) *[aria-label="Members"]>div[role="listitem"] div[class^=memberInner] {
+  padding-inline: 0px;
+  /* Tweak this for more or less vertical gap between members */
+  padding-block: 3px;
+}
