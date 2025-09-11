@@ -225,3 +225,56 @@ div:has(> main[class^="chatContent"]) *[aria-label="Members"]>div[role="listitem
   /* Tweak this for more or less vertical gap between members */
   padding-block: 3px;
 }
+
+/*
+  Dealing with the "destination-icymi-ux-v2" experiment, I guess...
+*/
+html.align-chat-input {
+
+  /*
+    This div was pushing up the height of the chat textarea,
+    despite the CSS variable they themselves declared.
+  */
+  & main[class^="chatContent"]>form div[class^="attachWrapper"] {
+    padding-block: 0;
+    height: var(--custom-channel-textarea-text-area-height);
+    /*
+      Make the button vertically centered after removing padding.
+      It was only centered before thanks to the exact pixel value on the padding.
+      Sloppy work. I know it's an experiment, but still.
+    */
+    display: flex;
+    align-items: center;
+    /*
+      Make it stick to the top of the text area again;
+      It only did so before because of `height: unset` and `align-self: stretch`, but we broke that now
+    */
+    position: sticky;
+    top: 0;
+  }
+
+  /*
+    They put this spacer here after moving the "User is typing" thing to above the chatbar, instead of below.
+    I get the intention; it was a little bit unnatural to have it under the chatbar,
+    but leaving so much room reserved for it is even worse, it feels like an entire message's worth of dead space
+  */
+  & main[class^=chatContent] div[class^="scrollerSpacer"] {
+    /* was 44px before - WAY TOO MUCH EMPTY SPACE */
+    height: 30px;
+  }
+
+  /* Bringing the "User is typing" indicator to be under the chat bar again */
+  & main[class^="chatContent"]>form div[class^="typing"] {
+    top: unset !important;
+    bottom: -16px !important;
+  }
+
+  /* Making room for the typing indicator below the chatbar again */
+  & main[class^="chatContent"]>form {
+    /* 
+      With the current chatbar height, the top border lines up
+      perfectly with the top border of the "User Area" section on the left
+    */
+    margin-bottom: 16px;
+  }
+}
