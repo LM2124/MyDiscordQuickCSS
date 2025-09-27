@@ -58,7 +58,7 @@ div[class*="burstGlow"] {
   display: none;
 }
 
-/* 
+/*
  "Want to start the hype train? Get Nitro and SHOVE IT UP YOUR [redacted]"
  (...When hovering over a super reaction.)
  */
@@ -113,7 +113,7 @@ nav>div[aria-label="User Settings"]>div[aria-label="Merch"] {
   ---------  Distractions  ---------
 */
 
-/* 
+/*
   Sticker picker button.
   You can literally open the GIF picker and switch
   to the sticker picker. I don't need the space this takes.
@@ -141,10 +141,10 @@ div[class^="callContainer"] div:has(>div[aria-label="Play Activities here"]) {
 }
 
 /*
-  Removes `Noise Suppression`, `Start Activity`, and `Camera` 
+  Removes `Noise Suppression`, `Start Activity`, and `Camera`
   buttons respectively; disable each as desired
 */
-/* section[aria-label="User area"] button[aria-label="Noise Suppression powered by Krisp"] { 
+/* section[aria-label="User area"] button[aria-label="Noise Suppression powered by Krisp"] {
   display: none
 } */
 section[aria-label="User area"] button[aria-label="Start an Activity"] {
@@ -181,7 +181,7 @@ ul[aria-label="Channels"]>li:has(div[aria-label="Server Boosts"]) {
 
 
 /*
-  Using this class might not stick for too long 
+  Using this class might not stick for too long
   since I have a feeling that discord will remove it
   as they phase out the visual refresh
   Still, for now it makes some tuning very easy.
@@ -227,15 +227,19 @@ div:has(> main[class^="chatContent"]) *[aria-label="Members"]>div[role="listitem
 }
 
 /*
-  Dealing with the "destination-icymi-ux-v2" experiment, I guess...
-*/
-html.align-chat-input {
+  Reducing the size and padding of the new input bar;
+  and moving the typing indicator back below it.
 
+  They moved the typing indicator to above the input bar,
+  but had to leave a massive amount of empty spacing above
+  the bar while the indicator isn't present. I'd rather have the old one.
+*/
+html main[class^="chatContent"] {
   /*
     This div was pushing up the height of the chat textarea,
     despite the CSS variable they themselves declared.
   */
-  & main[class^="chatContent"]>form div[class^="attachWrapper"] {
+  &>form div[class^="attachWrapper"] {
     padding-block: 0;
     height: var(--custom-channel-textarea-text-area-height);
     /*
@@ -258,20 +262,20 @@ html.align-chat-input {
     I get the intention; it was a little bit unnatural to have it under the chatbar,
     but leaving so much room reserved for it is even worse, it feels like an entire message's worth of dead space
   */
-  & main[class^=chatContent] div[class^="scrollerSpacer"] {
+  & div[class^="scrollerSpacer"] {
     /* was 44px before - WAY TOO MUCH EMPTY SPACE */
     height: 30px;
   }
 
   /* Bringing the "User is typing" indicator to be under the chat bar again */
-  & main[class^="chatContent"]>form div[class^="typing"] {
+  &>form div[class^="typing"] {
     top: unset !important;
     bottom: -16px !important;
   }
 
   /* Making room for the typing indicator below the chatbar again */
-  & main[class^="chatContent"]>form {
-    /* 
+  &>form {
+    /*
       With the current chatbar height, the top border lines up
       perfectly with the top border of the "User Area" section on the left
     */
