@@ -73,15 +73,28 @@ div[class*="burstGlow"] {
   border-bottom: unset;
 }
 
-/* Nitro button above direct messages */
+/*
+  Superfluous buttons in the direct messages window
+
+  Personally, I have no intention of engaging with any of these buttons,
+  but if you do, just comment these out.
+*/
+
+/* Nitro button */
 ul[aria-label="Direct Messages"] li:has(a[href="/store"]) {
   display: none;
 }
 
-/* Shop button above direct messages */
+/* Shop button */
 ul[aria-label="Direct Messages"] li:has(a[href="/shop"]) {
   display: none;
 }
+
+/* Quests button */
+ul[aria-label="Direct Messages"] li:has(a[href="/quest-home"]) {
+  display: none;
+}
+
 
 /* Hide profile Nameplates */
 div[role="listitem"] div[class*=nameplated]>div[class^=container] {
@@ -235,6 +248,7 @@ div:has(> main[class^="chatContent"]) *[aria-label="Members"]>div[role="listitem
   the bar while the indicator isn't present. I'd rather have the old one.
 */
 html main[class^="chatContent"] {
+
   /*
     This div was pushing up the height of the chat textarea,
     despite the CSS variable they themselves declared.
