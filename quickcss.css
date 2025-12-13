@@ -169,6 +169,14 @@ section[aria-label="User area"] button[aria-label="Turn On Camera"] {
 }
 
 /*
+  Remove green gradient on the container of the voice channel you're on. Seems to be an A/B test.
+  I find this to be much more distracting than useful.
+*/
+ul[aria-label="Channels"] li[class*=voiceChannelHighlightContainer] div[class*=voiceChannelHighlight] {
+  display: none;
+}
+
+/*
   Hide "Discover" servers button
   Flakey rule but meh. It should be obvious when this breaks.
 */
