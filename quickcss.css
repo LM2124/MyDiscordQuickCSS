@@ -97,7 +97,7 @@ ul[aria-label="Direct Messages"] li:has(a[href="/quest-home"]) {
 
 
 /* Hide profile Nameplates */
-div[role="listitem"] div[class*=nameplated]>div[class^=container] {
+div[role="listitem"] div[class*=nameplated]>div[class*=container] {
   display: none;
 }
 
@@ -106,8 +106,8 @@ div[role="listitem"] div[class*=nameplated]>div[class^=container] {
   Remove fancy nitro-colored background gradients.
   I don't like these.
 */
-div[class^=gradientBackground],
-div[class^=pulseGradient] {
+div[class*=gradientBackground],
+div[class*=pulseGradient] {
   display: none;
 }
 
@@ -144,12 +144,12 @@ div.expression-picker-chat-input-button:has(> div[aria-label="Open sticker picke
 }
 
 /* "Turn On Camera" button in voice call window */
-div[class^="callContainer"] div[class^="attachedCaretButtonContainer"]:has(button[aria-label="Turn On Camera"]) {
+div[class*="callContainer"] div[class*="attachedCaretButtonContainer"]:has(button[aria-label="Turn On Camera"]) {
   display: none;
 }
 
 /* "Start Activity" button in voice call window */
-div[class^="callContainer"] div:has(>div[aria-label="Play Activities here"]) {
+div[class*="callContainer"] div:has(>div[aria-label="Play Activities here"]) {
   display: none;
 }
 
@@ -180,7 +180,7 @@ ul[aria-label="Channels"] li[class*=voiceChannelHighlightContainer] div[class*=v
   Hide "Discover" servers button
   Flakey rule but meh. It should be obvious when this breaks.
 */
-nav div[aria-label="Servers"]+div+div[class^=listItem] {
+nav div[aria-label="Servers"]+div+div[class*=listItem] {
   display: none;
 }
 
@@ -233,15 +233,15 @@ ul[aria-label="Channels"]>li:has(div[aria-label="Server Boosts"]) {
   I'm using that <main> element as an anchor because I don't like the idea of
   a lone *[aria-label=] selector trying to match literally everything in the DOM
 */
-div:has(> main[class^="chatContent"]) *[aria-label="Members"]>[class^=membersGroup] {
+div:has(> main[class*="chatContent"]) *[aria-label="Members"]>[class*=membersGroup] {
   padding-left: 10px;
 }
 
-div:has(> main[class^="chatContent"]) *[aria-label="Members"]>div[role="listitem"] div[class^=childContainer] {
+div:has(> main[class*="chatContent"]) *[aria-label="Members"]>div[role="listitem"] div[class*=childContainer] {
   padding-inline: 0;
 }
 
-div:has(> main[class^="chatContent"]) *[aria-label="Members"]>div[role="listitem"] div[class^=memberInner] {
+div:has(> main[class*="chatContent"]) *[aria-label="Members"]>div[role="listitem"] div[class*=memberInner] {
   padding-inline: 0px;
   /* Tweak this for more or less vertical gap between members */
   padding-block: 3px;
@@ -255,13 +255,13 @@ div:has(> main[class^="chatContent"]) *[aria-label="Members"]>div[role="listitem
   but had to leave a massive amount of empty spacing above
   the bar while the indicator isn't present. I'd rather have the old one.
 */
-html main[class^="chatContent"] {
+html main[class*="chatContent"] {
 
   /*
     This div was pushing up the height of the chat textarea,
     despite the CSS variable they themselves declared.
   */
-  &>form div[class^="attachWrapper"] {
+  &>form div[class*="attachWrapper"] {
     padding-block: 0;
     height: var(--custom-channel-textarea-text-area-height);
     /*
@@ -284,13 +284,13 @@ html main[class^="chatContent"] {
     I get the intention; it was a little bit unnatural to have it under the chatbar,
     but leaving so much room reserved for it is even worse, it feels like an entire message's worth of dead space
   */
-  & div[class^="scrollerSpacer"] {
+  & div[class*="scrollerSpacer"] {
     /* was 44px before - WAY TOO MUCH EMPTY SPACE */
     height: 30px;
   }
 
   /* Bringing the "User is typing" indicator to be under the chat bar again */
-  &>form div[class^="typing"] {
+  &>form div[class*="typing"] {
     top: unset !important;
     bottom: -16px !important;
   }
