@@ -154,18 +154,52 @@ div[class*="callContainer"] div:has(>div[aria-label="Play Activities here"]) {
 }
 
 /*
-  Removes `Noise Suppression`, `Start Activity`, and `Camera`
-  buttons respectively; disable each as desired
+  Removes buttons from the voice channel action bar; I don't intend
+  to use some of these, so comment/uncomment each at your own taste
 */
-/* section[aria-label="User area"] button[aria-label="Noise Suppression powered by Krisp"] {
-  display: none
-} */
-section[aria-label="User area"] button[aria-label="Start an Activity"] {
-  display: none
-}
+section[aria-label="User area"] div[class*=actionButtons] {
+  /*
+    All of these selectors are flaky, so this time I even made alternatives;
+    with luck, at least one of them will hold for each button before I need to adjust this again
+    ...Though using nth-of-type might cause further problems depending on how they change this in the future...
+  */
 
-section[aria-label="User area"] button[aria-label="Turn On Camera"] {
-  display: none
+  /* Camera Button */
+  &>button[aria-describedby=«r5ai»],
+  >button:nth-of-type(1),
+  >button:has(g[clip-path="url(#__lottie_element_2774)"]) {
+    display: none;
+  }
+
+  /* Screenshare Button */
+  /*
+  &>button[aria-describedby=«r5aj»],
+  >button:nth-of-type(2),
+  >button:has(g[clip-path="url(#__lottie_element_2813)"]) {
+    display: none;
+  }
+  */
+
+  /* "Start an Activity" Button */
+  &>button[aria-describedby=«r5ak»],
+  >button:nth-of-type(3),
+  >button:has(g[clip-path="url(#__lottie_element_2865)"]) {
+    display: none;
+  }
+
+  /* Soundboard Button (Why does this one have to be different??) */
+  /*
+   Note: The "Open Soundboard" span has `id=«r5al»`, but for this
+   button they forgot to specify it in the `aria-describedby` field;
+   In case they ever notice this, I included the selector which would match it
+  */
+  /*
+  &>button[aria-describedby=«r5al»],
+  >span:nth-of-type(4),
+  >span:has(g[clip-path="url(#__lottie_element_2883)"]) {
+    display: none;
+  }
+  */
 }
 
 /*
