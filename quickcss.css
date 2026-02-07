@@ -157,7 +157,8 @@ div[class*="callContainer"] div:has(>div[aria-label="Play Activities here"]) {
   Removes buttons from the voice channel action bar; I don't intend
   to use some of these, so comment/uncomment each at your own taste
 */
-section[aria-label="User area"] div[class*=actionButtons] {
+section[aria-label="User status and settings"] div[class*=actionButtons],
+section[class*=panels] div[class*=actionButtons] {
   /*
     All of these selectors are flaky, so this time I even made alternatives;
     with luck, at least one of them will hold for each button before I need to adjust this again
@@ -165,38 +166,38 @@ section[aria-label="User area"] div[class*=actionButtons] {
   */
 
   /* Camera Button */
-  &>button[aria-describedby=«r5ai»],
+  &>button[aria-describedby=«re3h»],
   >button:nth-of-type(1),
-  >button:has(g[clip-path="url(#__lottie_element_2774)"]) {
+  >button:has(g[clip-path="url(#__lottie_element_8565)"]) {
     display: none;
   }
 
   /* Screenshare Button */
   /*
-  &>button[aria-describedby=«r5aj»],
+  &>button[aria-describedby=«re3i»],
   >button:nth-of-type(2),
-  >button:has(g[clip-path="url(#__lottie_element_2813)"]) {
+  >button:has(g[clip-path="url(#__lottie_element_8604)"]) {
     display: none;
   }
   */
 
   /* "Start an Activity" Button */
-  &>button[aria-describedby=«r5ak»],
+  &>button[aria-describedby=«re3j»],
   >button:nth-of-type(3),
-  >button:has(g[clip-path="url(#__lottie_element_2865)"]) {
+  >button:has(g[clip-path="url(#__lottie_element_8656)"]) {
     display: none;
   }
 
   /* Soundboard Button (Why does this one have to be different??) */
   /*
-   Note: The "Open Soundboard" span has `id=«r5al»`, but for this
+   Note: The "Open Soundboard" span has `id=«re3k»`, but for this
    button they forgot to specify it in the `aria-describedby` field;
    In case they ever notice this, I included the selector which would match it
   */
   /*
-  &>button[aria-describedby=«r5al»],
+  &>button[aria-describedby=«re3k»],
   >span:nth-of-type(4),
-  >span:has(g[clip-path="url(#__lottie_element_2883)"]) {
+  >span:has(g[clip-path="url(#__lottie_element_8674)"]) {
     display: none;
   }
   */
